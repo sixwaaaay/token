@@ -15,6 +15,7 @@ package rpc
 
 import (
 	"context"
+	"net/http"
 	"testing"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -68,4 +69,24 @@ func createToken(secret []byte) string {
 	token := jwt.New(jwt.SigningMethodHS256)
 	ss, _ := token.SignedString(secret)
 	return ss
+}
+
+func TestCtx4H_WithAuthorization(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+	req.Header.Add("Authorization", "Bearer token")
+
+	ctx := Ctx4H(req)
+
+	md, _ := metadata.FromOutgoingContext(ctx)
+	assert.Equal(t, "Bearer token", md["authorization"][0])
+}
+
+func TestCtx4H_WithoutAuthorization(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+
+	ctx := Ctx4H(req)
+
+	md, _ := metadata.FromOutgoingContext(ctx)
+
+	assert.Empty(t, md["authorization"])
 }

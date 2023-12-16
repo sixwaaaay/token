@@ -15,6 +15,7 @@ package rpc
 
 import (
 	"context"
+	"net/http"
 	"strings"
 
 	"google.golang.org/grpc"
@@ -38,4 +39,12 @@ func Handler(secret []byte) grpc.UnaryServerInterceptor {
 		}
 		return handler(c, req)
 	}
+}
+
+func Ctx4H(r *http.Request) context.Context {
+	header := r.Header.Get("Authorization")
+	if header == "" {
+		return r.Context()
+	}
+	return metadata.AppendToOutgoingContext(r.Context(), "Authorization", header)
 }
