@@ -26,6 +26,14 @@ import (
 	"github.com/sixwaaaay/token"
 )
 
+// Handler returns a UnaryServerInterceptor that checks for a JWT token in the
+// incoming request's metadata. If a token is found, it is parsed and the claims
+// are added to the context. If no token is found or the token is invalid, the
+// request is passed through without modification.
+//
+// The secret parameter is used to validate the JWT token.
+//
+// This function is typically used as a gRPC server interceptor.
 func Handler(secret []byte) grpc.UnaryServerInterceptor {
 	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp any, err error) {
 		incomingContext, b := metadata.FromIncomingContext(ctx)
@@ -41,6 +49,11 @@ func Handler(secret []byte) grpc.UnaryServerInterceptor {
 	}
 }
 
+// Ctx4H extracts the Authorization header from the HTTP request and appends it
+// to the outgoing context. If no Authorization header is found, the request's
+// context is returned unmodified.
+//
+// This function is typically used to propagate HTTP headers to gRPC metadata.
 func Ctx4H(r *http.Request) context.Context {
 	header := r.Header.Get("Authorization")
 	if header == "" {
