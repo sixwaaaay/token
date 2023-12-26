@@ -1,3 +1,5 @@
 [![CI](https://github.com/sixwaaaay/token/actions/workflows/ci.yaml/badge.svg)](https://github.com/sixwaaaay/token/actions/workflows/ci.yaml)
 [![Codecov](https://codecov.io/gh/sixwaaaay/token/branch/main/graph/badge.svg?token=ZQZQZQZQZQ)](https://codecov.io/gh/sixwaaaay/token)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sixwaaaay/token)](https://goreportcard.com/report/github.com/sixwaaaay/token)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sixwaaaay_token&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sixwaaaay_token)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sixwaaaay_token&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sixwaaaay_token)
