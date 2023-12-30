@@ -1,0 +1,22 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1%
+      token:
+        flags: token
+        target: auto
+        threshold: 1%
+      rpc:
+        flags: rpc
+        target: auto
+        threshold: 1%
+
+flags:
+  token:
+    paths:
+      - "*/**"
+  rpc:
+    paths:
+      - rpc/
