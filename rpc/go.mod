@@ -3,7 +3,7 @@ module github.com/sixwaaaay/token/rpc
 go 1.20
 
 require (
-	github.com/golang-jwt/jwt/v5 v5.2.0
+	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/sixwaaaay/token v0.0.0-20231216070301-25cf4b3b334f
 	github.com/stretchr/testify v1.8.4
 	google.golang.org/grpc v1.62.0
