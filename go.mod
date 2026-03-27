@@ -1,9 +1,9 @@
 module github.com/sixwaaaay/token
 
-go 1.20
+go 1.21
 
 require (
-	github.com/golang-jwt/jwt/v5 v5.2.1
+	github.com/golang-jwt/jwt/v5 v5.3.1
 	github.com/stretchr/testify v1.9.0
 )
 
